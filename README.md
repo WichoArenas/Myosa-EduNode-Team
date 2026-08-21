@@ -1,8 +1,7 @@
 # EduNode GCS: Autonomous Edge AI Telemetry Station 🚀
 **A MYOSA 6.0 Project Submission**
 
-**Authors:** Luis Eduardo Arenas Deseano & Lixin Tu
-
+**Authors:** Luis Eduardo Arenas Deseano & Lixin Tu  
 **Tech Stack:** C++ (FreeRTOS) | Python | PostgreSQL | Edge AI
 
 ![EduNode System Setup](Media/image_098b31.jpeg)
@@ -57,7 +56,15 @@ graph TD
 ![Hardware Internals](Media/image_098b0e.jpeg)
 *Fig 2. Hardware topology displaying the master microcontroller and sensor arrays prepared for multiprocessing.*
 
-## 🌬️ 4. Overcoming Physics: The Fan Kickstart
+## ⚡ 4. The Power of Multi-Core Edge Computing
+A standard single-core microcontroller would inevitably choke or experience severe lag when attempting to evaluate a complex AI polynomial model, poll I2C sensors, drive an OLED screen, and stream data via Wi-Fi and Bluetooth simultaneously. 
+
+![Multi-Core Stress Test](Media/multicore_stress.jpeg)
+*Fig 3. System undergoing a live stress-test: simultaneously broadcasting telemetry via Wi-Fi and Bluetooth, driving hardware actuators, and calculating AI forecasts with zero process lag.*
+
+By leveraging the ESP32's dual-core architecture through FreeRTOS, we completely isolated the critical physical operations (Core 0) from the heavy communication protocols (Core 1). This ensures **zero process blocking, zero data bottlenecks, and zero thermal throttling**. The system remains cold, highly responsive, and capable of operating 24/7 in demanding environments.
+
+## 🌬️ 5. Overcoming Physics: The Fan Kickstart
 DC fan motors suffer from "Stall Voltage" (static friction) at low speeds. EduNode solves this using an algorithmic Kickstart. When the AI demands cooling, the system injects a 500ms 100% PWM burst to break the friction, then maps into a progressive lower-power curve (45% - 100%), ensuring physical airflow while saving battery.
 
 ```mermaid
@@ -80,38 +87,38 @@ flowchart TD
     O --> P((Output to MOSFET))
 ```
 
-## 🛡️ 5. Physical Security & Real-Time Tamper Alerts
+## 🛡️ 6. Physical Security & Real-Time Tamper Alerts
 The mini-rack enclosure is strictly monitored for unauthorized physical access. Utilizing an APDS9960 (Optical Intrusion) and an MPU6050 (Tip-Over Alarm), the system generates instant, real-time alerts if the ground station falls, is moved, or if someone attempts to open the enclosure without authorization.
 
 ![OLED Intrusion Alert](Media/oled_alert.jpeg)
-*Fig 3. Hardware OLED immediately displaying an unauthorized box intrusion alert.*
+*Fig 4. Hardware OLED immediately displaying an unauthorized box intrusion alert.*
 
 ![Python Tamper Alert](Media/python_alert.jpeg)
-*Fig 4. Python GCS reflecting the real-time physical tamper alert from the gyroscope.*
+*Fig 5. Python GCS reflecting the real-time physical tamper alert from the gyroscope.*
 
 Furthermore, the system guarantees maximum protection against extreme environmental factors. If the internal temperature surpasses the configured critical risk threshold, a thermal overload protocol is engaged.
 
 ![Critical Overload Alert](Media/image_09dd49.jpeg)
-*Fig 5. Python Dashboard catching a Critical Thermal Overload, triggering a native Windows OS notification.*
+*Fig 6. Python Dashboard catching a Critical Thermal Overload, triggering a native Windows OS notification.*
 
-## 📊 6. Performance Results & CPU Health
-Our analytics dashboard logs data locally to a PostgreSQL database. The bottom graph tracks system health. Notice the flat, stable purple line: the internal ESP32 CPU Die temperature remains absolutely stable, proving the FreeRTOS multiprocessing handles the AI workload without any thermal throttling.
+## 📊 7. Performance Results & CPU Health
+Our analytics dashboard logs data locally to a PostgreSQL database. The bottom graph tracks system health. Notice the flat, stable purple line: the internal ESP32 CPU Die temperature remains absolutely stable, validating our multi-core approach and proving that the workload induces no thermal stress.
 
 ![Dual Screen Analytics](Media/image_09dce9.jpeg)
-*Fig 6. Dual-Screen Analytics displaying the calculated Current Draw (mA) and the predictive AI cooling spikes.*
+*Fig 7. Dual-Screen Analytics displaying the calculated Current Draw (mA) and the predictive AI cooling spikes.*
 
 ![Professional Graph](Media/MYOSA_Final_Graph.png)
-*Fig 7. Standalone Matplotlib High-Resolution Export displaying timeline metrics.*
+*Fig 8. Standalone Matplotlib High-Resolution Export displaying timeline metrics.*
 
-## 🏁 7. Conclusion
-This project demonstrates the critical importance of multi-core programming in Edge Computing. By efficiently distributing the workload across the ESP32 processors, we ensure battery savings and guarantee that the system can operate 24/7 without thermal throttling. 
+## 🏁 8. Conclusion
+This project demonstrates the critical importance of multi-core programming in Edge Computing. By efficiently distributing the workload across the ESP32 processors, we ensure battery savings and guarantee that the system can operate 24/7 without thermal or process throttling. 
 
 Furthermore, the EduNode GCS successfully proves that the MYOSA development board is a highly competitive, low-cost option in the market. It is fully equipped to handle academic, professional, and industrial-grade environments, providing robust, real-time protection and continuous monitoring for racks and mini-racks.
 
-## 🎥 8. Video Demonstration
+## 🎥 9. Video Demonstration
 [Watch the System in Action on YouTube](#) *(Replace this text with your YouTube/Drive Link)*
 
-## 🛠️ 9. How to Run This Project
+## 🛠️ 10. How to Run This Project
 1. Open the `Firmware/EduNode_RTOS.ino` in Arduino IDE and flash it to the ESP32.
 2. In your terminal, navigate to the `Ground_Control_Station/` folder.
 3. Install dependencies: `pip install -r requirements.txt`
