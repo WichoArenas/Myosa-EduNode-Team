@@ -2,6 +2,7 @@
 **A MYOSA 6.0 Project Submission**
 
 **Authors:** Luis Eduardo Arenas Deseano & Lixin Tu
+**Tech Stack:** C++ (FreeRTOS) | Python | PostgreSQL | Edge AI
 
 ![EduNode System Setup](Media/image_098b31.jpeg)
 
@@ -78,25 +79,36 @@ flowchart TD
     O --> P((Output to MOSFET))
 ```
 
-## 🛡️ 5. Physical Security & Mechanical Drift
-The enclosure is monitored by an APDS9960 (Optical Intrusion) and an MPU6050 (Tip-Over Alarm). To prevent false positives caused by the natural expansion of the cardboard enclosure throughout the day, a **24-hour Long-Term Drift Filter** continuously absorbs micro-settling (0.0005% blend rate), dynamically updating the gyro's "Perfect Zero" without losing sensitivity to real shocks.
+## 🛡️ 5. Physical Security & Real-Time Tamper Alerts
+The mini-rack enclosure is strictly monitored for unauthorized physical access. Utilizing an APDS9960 (Optical Intrusion) and an MPU6050 (Tip-Over Alarm), the system generates instant, real-time alerts if the ground station falls, is moved, or if someone attempts to open the enclosure without authorization.
+
+![OLED Intrusion Alert](Media/oled_alert.jpeg)
+*Fig 3. Hardware OLED immediately displaying an unauthorized box intrusion alert.*
+
+![Python Tamper Alert](Media/python_alert.jpeg)
+*Fig 4. Python GCS reflecting the real-time physical tamper alert from the gyroscope.*
+
+Furthermore, the system guarantees maximum protection against extreme environmental factors. If the internal temperature surpasses the configured critical risk threshold, a thermal overload protocol is engaged.
 
 ![Critical Overload Alert](Media/image_09dd49.jpeg)
-*Fig 3. Python Dashboard catching a Critical Thermal Overload, triggering a native Windows OS notification.*
+*Fig 5. Python Dashboard catching a Critical Thermal Overload, triggering a native Windows OS notification.*
 
 ## 📊 6. Performance Results & CPU Health
 Our analytics dashboard logs data locally to a PostgreSQL database. The bottom graph tracks system health. Notice the flat, stable purple line: the internal ESP32 CPU Die temperature remains absolutely stable, proving the FreeRTOS multiprocessing handles the AI workload without any thermal throttling.
 
 ![Dual Screen Analytics](Media/image_09dce9.jpeg)
-*Fig 4. Dual-Screen Analytics displaying the calculated Current Draw (mA) and the predictive AI cooling spikes.*
+*Fig 6. Dual-Screen Analytics displaying the calculated Current Draw (mA) and the predictive AI cooling spikes.*
 
 ![Professional Graph](Media/MYOSA_Final_Graph.png)
-*Fig 5. Standalone Matplotlib High-Resolution Export displaying timeline metrics.*
+*Fig 7. Standalone Matplotlib High-Resolution Export displaying timeline metrics.*
 
-## 🎥 7. Video Demonstration
+## 🏁 7. Conclusion
+This project demonstrates the critical importance of multi-core programming in Edge Computing. By efficiently distributing the workload across the ESP32 processors, we ensure battery savings and guarantee that the system can operate 24/7 without thermal throttling. The EduNode GCS successfully proves that the MYOSA development board is fully equipped and ready to handle professional, industrial-grade environments for continuous mini-rack protection and monitoring.
+
+## 🎥 8. Video Demonstration
 [Watch the System in Action on YouTube](#) *(Replace this text with your YouTube/Drive Link)*
 
-## 🛠️ 8. How to Run This Project
+## 🛠️ 9. How to Run This Project
 1. Open the `Firmware/EduNode_RTOS.ino` in Arduino IDE and flash it to the ESP32.
 2. In your terminal, navigate to the `Ground_Control_Station/` folder.
 3. Install dependencies: `pip install -r requirements.txt`
