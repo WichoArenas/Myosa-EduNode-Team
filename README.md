@@ -103,7 +103,9 @@ Our analytics dashboard logs data locally to a PostgreSQL database. The bottom g
 *Fig 7. Standalone Matplotlib High-Resolution Export displaying timeline metrics.*
 
 ## 🏁 7. Conclusion
-This project demonstrates the critical importance of multi-core programming in Edge Computing. By efficiently distributing the workload across the ESP32 processors, we ensure battery savings and guarantee that the system can operate 24/7 without thermal throttling. The EduNode GCS successfully proves that the MYOSA development board is fully equipped and ready to handle professional, industrial-grade environments for continuous mini-rack protection and monitoring.
+This project demonstrates the critical importance of multi-core programming in Edge Computing. By efficiently distributing the workload across the ESP32 processors, we ensure battery savings and guarantee that the system can operate 24/7 without thermal throttling. 
+
+Furthermore, the EduNode GCS successfully proves that the MYOSA development board is a highly competitive, low-cost option in the market. It is fully equipped to handle academic, professional, and industrial-grade environments, providing robust, real-time protection and continuous monitoring for racks and mini-racks.
 
 ## 🎥 8. Video Demonstration
 [Watch the System in Action on YouTube](#) *(Replace this text with your YouTube/Drive Link)*
