@@ -3,7 +3,7 @@
 
 **Authors:** Luis Eduardo Arenas Deseano & Lixin Tu
 
-![EduNode System Setup](Media/image_098b31.jpg)
+![EduNode System Setup](Media/image_098b31.jpeg)
 
 ## 📌 1. Project Abstract
 The EduNode Ground Control Station (GCS) is a low-cost, scaled prototype designed to monitor and protect critical UAV flight hardware in changing environments. By utilizing a dual-core RTOS architecture on an ESP32, the system processes environmental telemetry, physical security (intrusion/tip-over), and thermal control simultaneously without CPU throttling.
@@ -15,7 +15,7 @@ Instead of reacting to heat after it accumulates, EduNode predicts it. We implem
 
 This enables the cooling actuator to engage preemptively, preventing thermal spikes before they damage the hardware.
 
-![OLED Macro](Media/image_098aec.jpg)
+![OLED Macro](Media/image_098aec.jpeg)
 *Fig 1. Real-time OLED display showing AI forecasting, internal CPU Die health, and live current estimation.*
 
 ## ⚙️ 3. Hardware Architecture & RTOS
@@ -52,7 +52,7 @@ graph TD
     WIFI <--> |Wi-Fi / USB / Bluetooth| GCS[Python GCS Database]
 ```
 
-![Hardware Internals](Media/image_098b0e.jpg)
+![Hardware Internals](Media/image_098b0e.jpeg)
 *Fig 2. Hardware topology displaying the master microcontroller and sensor arrays prepared for multiprocessing.*
 
 ## 🌬️ 4. Overcoming Physics: The Fan Kickstart
@@ -81,13 +81,13 @@ flowchart TD
 ## 🛡️ 5. Physical Security & Mechanical Drift
 The enclosure is monitored by an APDS9960 (Optical Intrusion) and an MPU6050 (Tip-Over Alarm). To prevent false positives caused by the natural expansion of the cardboard enclosure throughout the day, a **24-hour Long-Term Drift Filter** continuously absorbs micro-settling (0.0005% blend rate), dynamically updating the gyro's "Perfect Zero" without losing sensitivity to real shocks.
 
-![Critical Overload Alert](Media/image_09dd49.jpg)
+![Critical Overload Alert](Media/image_09dd49.jpeg)
 *Fig 3. Python Dashboard catching a Critical Thermal Overload, triggering a native Windows OS notification.*
 
 ## 📊 6. Performance Results & CPU Health
 Our analytics dashboard logs data locally to a PostgreSQL database. The bottom graph tracks system health. Notice the flat, stable purple line: the internal ESP32 CPU Die temperature remains absolutely stable, proving the FreeRTOS multiprocessing handles the AI workload without any thermal throttling.
 
-![Dual Screen Analytics](Media/image_09dce9.jpg)
+![Dual Screen Analytics](Media/image_09dce9.jpeg)
 *Fig 4. Dual-Screen Analytics displaying the calculated Current Draw (mA) and the predictive AI cooling spikes.*
 
 ![Professional Graph](Media/MYOSA_Final_Graph.png)
