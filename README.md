@@ -2,6 +2,7 @@
 **A MYOSA 6.0 Project Submission**
 
 **Authors:** Luis Eduardo Arenas Deseano & Lixin Tu
+
 **Tech Stack:** C++ (FreeRTOS) | Python | PostgreSQL | Edge AI
 
 ![EduNode System Setup](Media/image_098b31.jpeg)
