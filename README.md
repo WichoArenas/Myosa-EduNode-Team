@@ -116,7 +116,7 @@ This project demonstrates the critical importance of multi-core programming in E
 Furthermore, the EduNode GCS successfully proves that the MYOSA development board is a highly competitive, low-cost option in the market. It is fully equipped to handle academic, professional, and industrial-grade environments, providing robust, real-time protection and continuous monitoring for racks and mini-racks.
 
 ## 🎥 9. Video Demonstration
-[Watch the System in Action on YouTube](#) *(Replace this text with your YouTube/Drive Link)*
+[Watch the System in Action on YouTube](#)
 
 ## 🛠️ 10. How to Run This Project
 1. Open the `Firmware/EduNode_RTOS.ino` in Arduino IDE and flash it to the ESP32.
